@@ -326,7 +326,7 @@ pub enum Status {
 impl TryFrom<u8> for Status {
     type Error = hci::BadStatusError;
 
-    fn try_from(value: u8) -> Result<Self, <Self as TryFrom<u8>>::Error> {
+    fn try_from(value: u8) -> Result<Self, hci::BadStatusError> {
         match value {
             0x41 => Ok(Status::Failed),
             0x42 => Ok(Status::InvalidParameters),
